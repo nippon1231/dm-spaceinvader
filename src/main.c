@@ -12,7 +12,8 @@ void show_boot_screen() {
     VDP_clearPlane(BG_A, TRUE);
     VDP_clearPlane(BG_B, TRUE);
     VDP_clearPlane(WINDOW, TRUE);
-
+    VDP_resetScreen();
+    SPR_clear();
     // Afficher le titre
     VDP_drawTextBG(BG_A, "================================", 4, 5);
     VDP_drawTextBG(BG_A, "                                ", 4, 6);
@@ -141,8 +142,6 @@ int main() {
         // Initialiser le jeu
         game_init();
 
-        // Afficher un message
-        VDP_drawTextBG(WINDOW,"GALAGA - START!", 10, 2);
 
         // Boucle de jeu
         while(!game_state.return_to_boot) {
@@ -157,6 +156,8 @@ int main() {
             VDP_setVerticalScroll(BG_A, scrollA);
             if (!game_state.game_over) {
                 game_update();
+            }else {
+                show_boot_screen();
             }
             game_render();
             game_updateHUD();
