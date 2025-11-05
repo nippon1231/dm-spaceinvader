@@ -5,4 +5,7 @@ SPRITE  explosion_sprite "sprite/explosion.png" 4 4 FAST 0
 
 TILESET tileset_stars "tileset/stars.png" BEST ALL
 
+IMAGE sega_logo "sprite/sega_logo.png" BEST ALL
+
 PALETTE palette_main "sprite/player.png"
+PALETTE palette_sega "sprite/sega_logo.png"

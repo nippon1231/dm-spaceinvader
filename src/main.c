@@ -6,17 +6,44 @@
 s16 scrollB = 0;  // Plan B (étoiles lointaines - lentes)
 s16 scrollA = 0;  // Plan A (étoiles proches - rapides)
 
+// Fonction d'affichage de l'écran de boot Sega
+void show_sega_boot_screen() {
+    // Effacer l'écran
+    VDP_clearPlane(BG_A, TRUE);
+    VDP_clearPlane(BG_B, TRUE);
+
+    // Charger la palette du logo Sega
+    PAL_setPalette(PAL0, palette_sega.data, DMA);
+
+    // Décompresser et afficher l'image du logo Sega
+    VDP_drawImageEx(BG_B, &sega_logo, TILE_ATTR_FULL(PAL0, FALSE, FALSE, FALSE, TILE_USER_INDEX), 0, 6, FALSE, TRUE);
+
+    // Attendre 2 secondes pour afficher le logo
+    waitMs(2000);
+
+    // Fondu au noir
+    PAL_fadeOutAll(20, TRUE);
+
+    // Effacer l'écran
+    VDP_clearPlane(BG_A, TRUE);
+    VDP_clearPlane(BG_B, TRUE);
+}
+
 int main() {
     // Initialiser le système
     JOY_init();
     VDP_setScreenWidth320();
     VDP_setScreenHeight224();
+
+    // Afficher l'écran de boot Sega
+    show_sega_boot_screen();
+
     // === CONFIGURER LE PLAN WINDOW ===
     // Window couvre toute la largeur, seulement la première ligne
     VDP_setWindowHPos(FALSE, 0);
     VDP_setWindowVPos(FALSE, 1);
-    
-    
+
+
     // Attendre la stabilisation
     waitMs(100);
     u16 tileIndex = TILE_USER_INDEX;
