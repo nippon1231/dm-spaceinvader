@@ -1,0 +1,46 @@
+# Build outputs
+out/
+*.bin
+*.out
+*.elf
+*.o
+*.a
+*.so
+
+# Generated resource files
+res/resources.s
+res/resources.h
+
+# Symbol and debug files
+*.txt
+*.log
+symbol.txt
+
+# ROM files (optional - uncomment if you don't want to track ROMs)
+# galaga.bin
+# rom.bin
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# IDE and editor files
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# SGDK/Gendev build artifacts
+*.68k
+*.inc
+boot/
+
+# Java class files (from rescomp)
+*.class

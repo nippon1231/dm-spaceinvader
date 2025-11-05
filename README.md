@@ -39,25 +39,58 @@ galaga-megadrive/
 
 ## Prérequis
 
+### Windows
+
 1. **SGDK (Sega Genesis Development Kit)**
    - Télécharger depuis: https://github.com/Stephane-D/SGDK
    - Installer et configurer la variable d'environnement GDK
+   - Voir [INSTALLATION.md](INSTALLATION.md) pour les détails
+
+### Linux
+
+1. **Gendev (SGDK pour Linux)**
+   - Voir [SETUP_LINUX.md](SETUP_LINUX.md) pour le guide complet
+   - Installation rapide : `./setup-linux.sh`
+
+### Tous les systèmes
 
 2. **Émulateur Mega Drive**
    - Gens/GS (recommandé pour le développement)
-   - Blastem
+   - BlastEm (le plus précis)
    - Fusion
    - RetroArch avec core Genesis Plus GX
 
-## Compilation
+## Installation et Compilation Rapide
 
-### Sur Windows (recommandé pour débutants)
+### Linux (Recommandé pour développement moderne)
+
+```bash
+# 1. Installation de l'environnement
+chmod +x setup-linux.sh
+./setup-linux.sh
+source ~/.bashrc
+
+# 2. Compilation
+chmod +x build-linux.sh
+./build-linux.sh
+
+# 3. Test
+blastem galaga.bin
+# ou
+retroarch -L /usr/lib/libretro/genesis_plus_gx_libretro.so galaga.bin
+```
+
+**Documentation complète** : [SETUP_LINUX.md](SETUP_LINUX.md)
+
+### Windows
 
 1. Assurez-vous que SGDK est installé et que la variable GDK pointe vers le répertoire SGDK
 
 2. Double-cliquez sur `build.bat`
 
 3. La ROM sera générée : `rom.bin`
+
+**Documentation complète** : [INSTALLATION.md](INSTALLATION.md)
 
 ### Avec Make (Linux/Mac ou Windows avec Make)
 
