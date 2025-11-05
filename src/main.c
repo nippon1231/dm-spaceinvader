@@ -27,7 +27,7 @@ void show_boot_screen() {
     VDP_drawTextBG(BG_A, "                                ", 4, 15);
     VDP_drawTextBG(BG_A, "  LEFT/RIGHT - MOVE SHIP       ", 4, 16);
     VDP_drawTextBG(BG_A, "  BUTTON A   - SHOOT           ", 4, 17);
-    VDP_drawTextBG(BG_A, "  START      - RESTART         ", 4, 18);
+    VDP_drawTextBG(BG_A, "  START      - RESET SCREEN    ", 4, 18);
 
     // Variable pour le clignotement
     u16 blink_counter = 0;
@@ -35,25 +35,58 @@ void show_boot_screen() {
 
     // Boucle d'attente avec clignotement du texte
     while(1) {
-        // Gérer le clignotement du texte "PRESS START"
+        // Gérer le clignotement du texte "PRESS A"
         blink_counter++;
         if (blink_counter > 30) {  // Changer toutes les 30 frames (~0.5 sec)
             show_text = !show_text;
             blink_counter = 0;
 
             if (show_text) {
-                VDP_drawTextBG(BG_A, "    PRESS START TO PLAY!       ", 4, 22);
+                VDP_drawTextBG(BG_A, "      PRESS A TO PLAY!         ", 4, 22);
             } else {
                 VDP_drawTextBG(BG_A, "                                ", 4, 22);
             }
         }
 
-        // Vérifier si START est pressé
+        // Vérifier les boutons pressés
         u16 joy = JOY_readJoypad(JOY_1);
-        if (joy & BUTTON_START) {
+
+        // BUTTON_A pour démarrer le jeu
+        if (joy & BUTTON_A) {
             // Petit délai pour éviter les pressions multiples
             waitMs(200);
             break;
+        }
+
+        // BUTTON_START pour réinitialiser l'écran de démarrage
+        if (joy & BUTTON_START) {
+            // Effacer l'écran
+            VDP_clearPlane(BG_A, TRUE);
+            VDP_clearPlane(BG_B, TRUE);
+            VDP_clearPlane(WINDOW, TRUE);
+
+            // Réafficher le titre
+            VDP_drawTextBG(BG_A, "================================", 4, 5);
+            VDP_drawTextBG(BG_A, "                                ", 4, 6);
+            VDP_drawTextBG(BG_A, "         G A L A G A           ", 4, 7);
+            VDP_drawTextBG(BG_A, "                                ", 4, 8);
+            VDP_drawTextBG(BG_A, "     MEGA DRIVE / GENESIS      ", 4, 9);
+            VDP_drawTextBG(BG_A, "                                ", 4, 10);
+            VDP_drawTextBG(BG_A, "================================", 4, 11);
+
+            // Réafficher les instructions
+            VDP_drawTextBG(BG_A, "      HOW TO PLAY:", 4, 14);
+            VDP_drawTextBG(BG_A, "                                ", 4, 15);
+            VDP_drawTextBG(BG_A, "  LEFT/RIGHT - MOVE SHIP       ", 4, 16);
+            VDP_drawTextBG(BG_A, "  BUTTON A   - SHOOT           ", 4, 17);
+            VDP_drawTextBG(BG_A, "  START      - RESET SCREEN    ", 4, 18);
+
+            // Réinitialiser le clignotement
+            blink_counter = 0;
+            show_text = TRUE;
+
+            // Petit délai pour éviter les pressions multiples
+            waitMs(200);
         }
 
         // Attendre la prochaine frame
