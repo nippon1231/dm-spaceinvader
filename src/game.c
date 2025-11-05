@@ -6,9 +6,10 @@ GameState game_state;
 
 void game_init() {
     // Réinitialiser l'état du jeu
-   // game_state.score = 0;
-   // game_state.wave = 1;
+    game_state.score = 0;
+    game_state.wave = 1;
     game_state.game_over = FALSE;
+    game_state.return_to_boot = FALSE;
     
     // Initialiser toutes les structures à zéro
     u16 i;
@@ -52,9 +53,9 @@ void game_init() {
 
 void game_update() {
     if (game_state.game_over) {
-        // Gérer le game over
+        // Gérer le game over - retourner à l'écran de démarrage
         if (JOY_readJoypad(JOY_1) & BUTTON_START) {
-            game_reset();
+            game_state.return_to_boot = TRUE;
         }
         return;
     }

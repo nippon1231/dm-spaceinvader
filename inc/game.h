@@ -57,6 +57,7 @@ typedef struct {
     u32 score;
     u16 wave;
     bool game_over;
+    bool return_to_boot;
 } GameState;
 
 // Fonctions du jeu
