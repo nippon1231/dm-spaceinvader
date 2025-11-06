@@ -14,7 +14,8 @@ void player_init() {
                                               game_state.player.y, 
                                               TILE_ATTR(PAL0, TRUE, FALSE, FALSE));
     SPR_setFrame(game_state.player.sprite, 3);
-                        }
+    XGM_setPCM(64, jump, sizeof(jump));                        
+}
 
 void player_update() {
     if (!game_state.player.active) return;
@@ -40,6 +41,7 @@ void player_update() {
     if (fire_cooldown > 0) fire_cooldown--;
     
     if ((joy & BUTTON_A) && fire_cooldown == 0) {
+
         player_shoot();
         fire_cooldown = 10; // Cooldown de 10 frames
     }
@@ -68,5 +70,6 @@ void player_update() {
 }
 
 void player_shoot() {
+    XGM_startPlayPCM(64, 15, SOUND_PCM_CH2);
     bullets_spawn(game_state.player.x + 4, game_state.player.y - 8);
 }

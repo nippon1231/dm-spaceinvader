@@ -121,7 +121,7 @@ int main() {
         VDP_loadTileSet(&tileset_stars, tileIndex, DMA);
         // Charger la palette
         PAL_setPalette(PAL0, palette_main.data, DMA);
-
+        PAL_setPalette(PAL1, palette_bulettes.data, DMA);
         // Remplir le plan B
         u16 x, y;
         for (y = 0; y < 32; y++) {

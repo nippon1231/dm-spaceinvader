@@ -6,10 +6,7 @@ GameState game_state;
 
 void game_init() {
     // Réinitialiser l'état du jeu
-    game_state.score = 0;
-    game_state.wave = 1;
-    game_state.game_over = FALSE;
-    game_state.return_to_boot = FALSE;
+
     
     // Initialiser toutes les structures à zéro
     u16 i;
@@ -109,6 +106,10 @@ void game_reset() {
     // Supprimer tous les sprites
     SPR_reset();
     
+    game_state.score = 0;
+    game_state.wave = 1;
+    game_state.game_over = FALSE;
+    game_state.return_to_boot = FALSE;    
     // Réinitialiser le jeu
     game_init();
 }

@@ -24,7 +24,7 @@ void bullets_spawn(s16 x, s16 y) {
             if (game_state.bullets[i].sprite == NULL) {
                 game_state.bullets[i].sprite = SPR_addSprite(&bullet_sprite,
                                                               x, y,
-                                                              TILE_ATTR(PAL0, TRUE, FALSE, FALSE));
+                                                              TILE_ATTR(PAL1, TRUE, FALSE, FALSE));
             } else {
                 SPR_setPosition(game_state.bullets[i].sprite, x, y);
                 SPR_setVisibility(game_state.bullets[i].sprite, VISIBLE);
@@ -62,7 +62,7 @@ void enemy_bullets_spawn(s16 x, s16 y) {
             if (game_state.enemy_bullets[i].sprite == NULL) {
                 game_state.enemy_bullets[i].sprite = SPR_addSprite(&bullet_sprite,
                                                                      x, y,
-                                                                     TILE_ATTR(PAL0, TRUE, FALSE, FALSE));
+                                                                     TILE_ATTR(PAL1, TRUE, FALSE, FALSE));
             } else {
                 SPR_setPosition(game_state.enemy_bullets[i].sprite, x, y);
                 SPR_setVisibility(game_state.enemy_bullets[i].sprite, VISIBLE);
