@@ -7,3 +7,6 @@ TILESET tileset_stars "tileset/stars.png" BEST ALL
 
 PALETTE palette_main "sprite/player.png"
 PALETTE palette_bulettes "sprite/bullet.png"
+
+WAV jump "sound/jump.wav" 5
+XGM song "sound/sonic2Emerald.vgm"
