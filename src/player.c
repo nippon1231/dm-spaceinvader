@@ -70,6 +70,6 @@ void player_update() {
 }
 
 void player_shoot() {
-    XGM_startPlayPCM(64, 15, SOUND_PCM_CH2);
+    
     bullets_spawn(game_state.player.x + 4, game_state.player.y - 8);
 }

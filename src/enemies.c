@@ -37,7 +37,7 @@ void enemies_spawn_wave() {
             game_state.enemies[i].sprite = SPR_addSprite(&enemy_sprite,
                                                           game_state.enemies[i].x,
                                                           game_state.enemies[i].y,
-                                                          TILE_ATTR(PAL0, TRUE, FALSE, FALSE));
+                                                          TILE_ATTR(PAL2, TRUE, FALSE, FALSE));
         } else {
             SPR_setPosition(game_state.enemies[i].sprite, 
                           game_state.enemies[i].x, 

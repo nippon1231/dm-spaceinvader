@@ -100,11 +100,12 @@ void show_boot_screen() {
 }
 
 int main() {
+    Z80_init();;
     // Initialiser le système
     JOY_init();
     VDP_setScreenWidth320();
     VDP_setScreenHeight224();
-
+    XGM_startPlay(song);
     // Boucle principale pour permettre le retour à l'écran de démarrage
     while(1) {
         // Afficher l'écran de démarrage
@@ -122,6 +123,7 @@ int main() {
         // Charger la palette
         PAL_setPalette(PAL0, palette_main.data, DMA);
         PAL_setPalette(PAL1, palette_bulettes.data, DMA);
+        PAL_setPalette(PAL2, palette_ennemy.data, DMA);
         // Remplir le plan B
         u16 x, y;
         for (y = 0; y < 32; y++) {
